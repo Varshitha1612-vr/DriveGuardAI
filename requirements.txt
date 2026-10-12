@@ -1,0 +1,8 @@
+numpy>=2.0.0
+pandas>=2.0.0
+opencv-python>=4.10.0
+ultralytics>=8.0.0
+streamlit>=1.30.0
+matplotlib>=3.8.0
+scikit-learn>=1.4.0
+torch>=2.0.0
