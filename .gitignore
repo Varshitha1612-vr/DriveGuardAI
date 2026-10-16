@@ -1,9 +1,31 @@
+
+# Python environment
 venv/
 .venv/
 __pycache__/
-.pytest_cache/
-data/
-outputs/
-models/
+*.py[cod]
+
+# Secrets and local configuration
 .env
+.env.*
+
+# Dataset videos and large data
+data/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Generated outputs
+outputs/
+.streamlit/
+
+# Model checkpoints and downloaded weights
+models/
+*.pt
+*.pth
+*.onnx
+
+# Temporary files
+*.tmp
 .DS_Store

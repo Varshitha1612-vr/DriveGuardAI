@@ -1,0 +1,32 @@
+{
+  "rows": 1500,
+  "positive_samples": 750,
+  "negative_samples": 750,
+  "missing_target_values": 0,
+  "duplicate_ids": 0,
+  "id_count_unique": 1500,
+  "timestamp_analysis": {
+    "timestamp_units": "seconds relative to each video clip",
+    "missing_values": {
+      "time_of_event": 750,
+      "time_of_alert": 750
+    },
+    "invalid_numeric_rows": {
+      "time_of_event": 0,
+      "time_of_alert": 0
+    },
+    "negative_time_values": 0,
+    "matches_positive_label_pattern": true,
+    "event_values_present": 750,
+    "alert_values_present": 750
+  },
+  "label_distribution": {
+    "target_0": 750,
+    "target_1": 750
+  },
+  "notes": [
+    "The target label is preserved as supplied by the dataset.",
+    "The event and alert columns are interpreted as time offsets in seconds relative to a video clip, with NaN when unavailable.",
+    "This is not a bounding-box annotation file, so no object-level ground truth is fabricated."
+  ]
+}

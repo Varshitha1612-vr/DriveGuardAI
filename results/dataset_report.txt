@@ -1,0 +1,18 @@
+DriveGuardAI dataset inspection report
+===================================
+Project root: /Users/varshithareddy/Desktop/DriveGuardAI
+Training CSV rows: 1500
+Test CSV rows: 1344
+Training videos: 1500
+Test videos: 1344
+Positive samples: 750
+Negative samples: 750
+Duplicate IDs: []
+Video files with no CSV match: []
+CSV IDs with no video match: []
+Unreadable videos: []
+Invalid timestamps: 0
+Missing labels or timestamps: 0
+
+Review log:
+- No structural issues detected.

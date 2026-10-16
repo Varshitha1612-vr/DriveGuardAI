@@ -1,0 +1,23 @@
+{
+  "baseline_name": "timestamp_presence_baseline",
+  "train_rows": 1500,
+  "positive_samples": 750,
+  "negative_samples": 750,
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "balanced_accuracy": 1.0,
+    "support_positive": 750,
+    "support_negative": 750,
+    "tp": 750,
+    "tn": 750,
+    "fp": 0,
+    "fn": 0
+  },
+  "notes": [
+    "This baseline is intentionally simple and uses only whether event/alert timestamps are present.",
+    "It is not a real video classifier; it is a sanity-check for dataset semantics and label validation."
+  ]
+}
