@@ -1,0 +1,5 @@
+video_id,target,frame_index,timestamp_seconds,brightness,blur_score,warnings,frame_path
+01040,0,590,19.667,48.93,355.78,,frames/01040_frame_000590.png
+01041,0,592,19.733,114.01,1908.47,,frames/01041_frame_000592.png
+00000,1,600,20.761,42.37,226.41,Potentially low-light frame,frames/00000_frame_000600.png
+00003,1,577,19.233,42.17,149.78,Potentially low-light frame,frames/00003_frame_000577.png

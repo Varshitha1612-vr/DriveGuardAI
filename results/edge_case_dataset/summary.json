@@ -1,0 +1,12 @@
+{
+  "source": "data/train.csv and original decoded frames from data/train/",
+  "sample_count": 4,
+  "samples_per_class": 2,
+  "warning_counts": {
+    "Potentially low-light frame": 2,
+    "Potentially blurry frame": 0
+  },
+  "frames_with_warnings": 2,
+  "accuracy_percent": null,
+  "accuracy_note": "Not calculated: the dataset provides video-level event labels, not frame-level ground truth for image-quality warnings or object boxes."
+}

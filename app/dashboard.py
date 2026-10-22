@@ -181,6 +181,67 @@ else:
     st.session_state.pop("video_analysis", None)
     st.session_state.pop("video_analysis_digest", None)
 
+with st.expander("Edge-case monitor: real dataset frames", expanded=True):
+    dataset_dir = project_root / "results" / "edge_case_dataset"
+    dataset_summary_path = dataset_dir / "summary.json"
+    dataset_csv_path = dataset_dir / "sample_results.csv"
+
+    if dataset_summary_path.exists() and dataset_csv_path.exists():
+        dataset_samples = load_json(dataset_summary_path)
+        sample_results = pd.read_csv(dataset_csv_path)
+        st.caption(
+            "These are original decoded frames extracted from labeled training videos. "
+            "Frame-quality warnings are measured on the displayed dataset frames."
+        )
+        dataset_metrics = st.columns(3)
+        dataset_metrics[0].metric("Dataset frames", dataset_samples["sample_count"])
+        dataset_metrics[1].metric(
+            "Frames with warnings",
+            dataset_samples["frames_with_warnings"],
+        )
+        dataset_metrics[2].metric(
+            "Low-light warnings",
+            dataset_samples["warning_counts"]["Potentially low-light frame"],
+        )
+        st.info(dataset_samples["accuracy_note"])
+
+        st.subheader("Original dataset frame samples")
+        for start in range(0, len(sample_results), 2):
+            columns = st.columns(2)
+            for column, (_, sample) in zip(
+                columns,
+                sample_results.iloc[start:start + 2].iterrows(),
+            ):
+                frame_path = dataset_dir / sample["frame_path"]
+                if not frame_path.is_file():
+                    st.error(f"Extracted dataset frame is missing: {frame_path}")
+                    continue
+                event_label = "event" if int(sample["target"]) == 1 else "no event"
+                warnings = sample["warnings"] or "No warning"
+                column.image(
+                    frame_path.read_bytes(),
+                    caption=(
+                        f'{sample["video_id"]}.mp4 · {event_label} · '
+                        f'{sample["timestamp_seconds"]:.2f}s · {warnings}'
+                    ),
+                    width="stretch",
+                )
+
+        st.subheader("Dataset-frame monitor results")
+        st.dataframe(sample_results, hide_index=True, width="stretch")
+        st.download_button(
+            "Download dataset-frame results CSV",
+            data=dataset_csv_path.read_bytes(),
+            file_name="edge_case_dataset_sample_results.csv",
+            mime="text/csv",
+            width="stretch",
+        )
+    else:
+        st.info(
+            "Dataset-frame evidence has not been generated yet. Run "
+            "`python -m src.edge_case_samples` from the project root."
+        )
+
 with st.expander("Dataset and evaluation summaries"):
     dataset_summary = load_json(project_root / "results" / "dataset_report.json")
     label_summary = load_json(project_root / "results" / "label_summary.json")
